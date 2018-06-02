@@ -1,0 +1,19 @@
+{
+  "name": "lb-debug",
+  "version": "0.0.2",
+  "description": "colorful conosle.log",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lb-contributor/lb-debug.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lb-contributor/lb-debug/issues"
+  },
+  "homepage": "https://github.com/lb-contributor/lb-debug#readme"
+}
