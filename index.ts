@@ -1,4 +1,4 @@
-var colors = [
+const colors = [
   '#0000CC', '#0000FF', '#0033CC', '#0033FF', '#0066CC', '#0066FF', '#0099CC',
   '#0099FF', '#00CC00', '#00CC33', '#00CC66', '#00CC99', '#00CCCC', '#00CCFF',
   '#3300CC', '#3300FF', '#3333CC', '#3333FF', '#3366CC', '#3366FF', '#3399CC',
@@ -12,10 +12,10 @@ var colors = [
   '#FF6600', '#FF6633', '#FF9900', '#FF9933', '#FFCC00', '#FFCC33'
 ]
 
-function selectColor(namespace) {
-  var hash = 0, i
+function selectColor(namespace: string): string {
+  let hash = 0
 
-  for (i in namespace) {
+  for (let i = 0; i < namespace.length; i++) {
     hash  = ((hash << 5) - hash) + namespace.charCodeAt(i)
     hash |= 0 // Convert to 32bit integer
   }
@@ -23,10 +23,10 @@ function selectColor(namespace) {
   return colors[Math.abs(hash) % colors.length]
 }
 
-function debug(name) {
-  var color = selectColor(name)
+function debug(name: string): (message?: any, ...params: any[]) => void {
+  const color = selectColor(name)
 
-  var log = function() {}
+  let log = function(): void {}
 
   if (process.env.NODE_ENV !== 'production') {
     log = window.console.log.bind(window.console, '%c%s', 'color: ' + color, name + ':')
@@ -35,4 +35,4 @@ function debug(name) {
   return log
 }
 
-module.exports = debug
+export default debug
