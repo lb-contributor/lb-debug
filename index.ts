@@ -23,12 +23,12 @@ function selectColor(namespace: string): string {
   return colors[Math.abs(hash) % colors.length]
 }
 
-function debug(name: string): (message?: any, ...params: any[]) => void {
+function debug(name: string, allways?: boolean): (message?: any, ...params: any[]) => void {
   const color = selectColor(name)
 
   let log = function(): void {}
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (allways || process.env.NODE_ENV !== 'production') {
     log = window.console.log.bind(window.console, '%c%s', 'color: ' + color, name + ':')
   }
 
