@@ -1,2 +1,2 @@
-declare function debug(name: string, allways?: boolean): (message?: any, ...params: any[]) => void;
+declare function debug(name: string, always?: boolean): (message?: any, ...params: any[]) => void;
 export default debug;

@@ -23,13 +23,15 @@ function selectColor(namespace: string): string {
   return colors[Math.abs(hash) % colors.length]
 }
 
-function debug(name: string, allways?: boolean): (message?: any, ...params: any[]) => void {
+function debug(name: string, always?: boolean): (message?: any, ...params: any[]) => void {
   const color = selectColor(name)
 
   let log = function(): void {}
 
-  if (allways || process.env.NODE_ENV !== 'production') {
-    log = window.console.log.bind(window.console, '%c%s', 'color: ' + color, name + ':')
+  const c = window ? window.console : console
+
+  if (always || process.env.NODE_ENV !== 'production') {
+    log = c.log.bind(c, '%c%s', 'color: ' + color, name + ':')
   }
 
   return log
